@@ -1,0 +1,1199 @@
+$color1: #F8F9F7;
+$color2: #84947B;
+$color3: #E1E9E1;
+$color4: #2F2E2E;
+$color5: #aeb8ae;
+$color6: #d3e0d3;
+$color7: #8b8585;
+$color8: #b2996b;
+$color9: #ffffff;
+$color10: #dddddd;
+:root{
+    --blue: rgb(75, 74, 74);
+    --white: #fff;
+    --grey : #f5f5f5 ;   
+    --black1 : #222;
+    --black2 : #999;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/Roboto-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../font/Metropolis-Light.otf') format('openType');
+}
+@font-face {
+    font-family: 'Futura';
+    src: url('../font/Futura-Light.otf') format('openType');
+}
+@font-face {
+    font-family: 'Dido';
+    src: url('../font/DidotHTFL06LightItal.ttf') format('truetype');
+}
+
+
+*{ 
+    font-family: "Futura";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+p
+{
+    font-family: "Futura";
+}
+h3, h2{
+    font-family: "Dido";
+}
+//card principale de la page d'acceuil
+.completeReceipt{
+    position: relative;
+    border: 1px solid $color5;
+    margin: 20px 0;
+    .image{
+        position: relative;
+        width: 100%;
+        min-height: 120px;
+        height: 350px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            position: absolute;
+            // left: 50%;
+            // top: 50%;
+            // transform: translate(-50%, -50%);
+            width: 100%;
+            object-fit: cover;
+        } 
+        
+
+    }
+    .details{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 20px 3px;
+        
+        .accountImage{
+            height: 20px;
+            width: 20px;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        p{
+            font-size: 0.7em;
+            color: $color2;
+            font-family: "Metropolis";
+        }
+    }
+    .receipt{
+        h2{
+            padding: 5px;
+            font-family: "Metropolis";
+        }
+        p{
+            padding: 5px;
+        }
+    }
+    .formDetail{
+        padding: 20px 5px;
+        border-bottom: 1px solid $color5;
+        button{
+            padding:10px 5px;
+            width: 100%;
+            border: none;
+            background: $color2;
+            color: $color1;
+            font-size: 1.1em;
+            cursor: pointer;
+            &:hover{
+                background: $color7;
+            }
+        }
+    }
+    .comment{
+        padding: 30px 5px;
+        display: flex;
+        align-items: center;
+        p{
+            padding: 0 10px;
+        }
+    }
+}
+
+//Card sur la partie left de la page d'acceuil
+.receiptLeft{
+    padding: 10px 0;
+    .image{
+        position: relative;
+        width: 100%;
+        min-height: 120px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            position: absolute;
+            // left: 50%;
+            // top: 50%;
+            // transform: translate(-50%, -50%);
+            width: 100%;
+            object-fit: cover;
+        }
+
+    }
+    .details{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 20px 3px;
+        
+        .accountImage{
+            height: 20px;
+            width: 20px;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        p{
+            font-size: 0.7em;
+            color: $color2;
+            font-family: "Metropolis";
+        }
+    }
+    .receipt{
+        padding: 5px 0;
+        h2{
+            padding: 5px;
+            font-family: "Metropolis";
+        }
+        p{
+            padding: 5px;
+        }
+    }
+    .formDetail{
+        padding: 20px 5px;
+        border-bottom: 1px solid $color5;
+        button{
+            padding:10px 5px;
+            width: 100%;
+            border: none;
+            background: $color2;
+            color: $color1;
+            font-size: 1.1em;
+            cursor: pointer;
+            &:hover{
+                background: $color7;
+            }
+        }
+    }
+    .comment{
+        padding: 30px 5px;
+        display: flex;
+        align-items: center;
+        
+    }
+}
+
+//page recettes
+#pageReceipt{
+    padding: 20px 40px;
+}
+//page la recette
+.theReceipt{
+    padding: 0 40px;
+    position: relative;
+    border: 1px solid $color5;
+    .image{
+        position: relative;
+        width: 100%;
+        min-height: 120px;
+        height: 350px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            position: absolute;
+            // left: 50%;
+            // top: 50%;
+            // transform: translate(-50%, -50%);
+            width: 100%;
+            object-fit: cover;
+        } 
+        
+
+    }
+    .details{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 20px 3px;
+        
+        .accountImage{
+            height: 20px;
+            width: 20px;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        p{
+            font-size: 0.7em;
+            color: $color2;
+            font-family: "Metropolis";
+        }
+    }
+    .receipt{
+        h2{
+            padding: 5px;
+            font-family: "Metropolis";
+        }
+        p{
+            padding: 5px;
+        }
+    }
+    .receiptInstructions{
+        padding: 30px 0;
+        border-bottom: 1px solid $color7;
+        
+    }
+    .comment{
+        padding: 30px 5px;
+        display: flex;
+        align-items: center;
+        p{
+            padding: 0 10px;
+        }
+    }
+    .commentContent{
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        margin: 5px 0;
+        p{
+            padding: 5px 0;
+        }
+        .author{
+            color: $color7;
+        }
+    }
+    
+}
+
+header{
+    position:relative;
+    
+    width: 100%;
+    border-bottom: 1px solid $color7;
+    nav{
+        position: fixed;
+        top: 0;
+        left: 0;    
+        width: 100%;
+        min-height: 50px;
+        height: 50px;
+        background-color: $color1;
+        z-index: 1000;
+        ul{
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            li{
+                padding:10px 0;
+                list-style: none;
+                a{
+                    text-decoration: none;
+                    color: $color4;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    .icon{
+                        margin-right: 5px;
+                    }
+                }
+                
+            }
+            
+        }
+    }
+    .menuDeroulant{
+        position:fixed;
+        border-bottom-left-radius: 5%;
+        border-bottom-right-radius: 5%;
+        right: 0;
+        top: -300px;
+        width: 25%;
+        background: $color1;
+        /* height: 160px; */
+        transition: 0.5s;
+        cursor:auto;
+        z-index: 500;
+        padding: 20px 20px;
+        &.active{
+            top: 50px;
+        }
+        form{
+            div{
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                input{
+                    height: 40px;
+                    font-size: 1em;
+                    padding: 10px 0;
+                }
+                label{
+                    width: 40%;
+                }
+            }
+            .button{
+                display: flex;
+                justify-content: center;
+                button{
+                    border-radius: 5px;
+                    width: 50%;
+                    border: none;
+                    background: $color2;
+                    color: $color1;
+                    font-size: 1.1em;
+                    padding: 5px 0;
+                    cursor: pointer;
+                    &:hover{
+                        background: $color7;
+                    }
+                }
+            }
+        }
+        div{
+            p{
+                //text-align: center;
+                padding: 10px 0;
+                a{
+                    text-decoration: none;
+                    color: $color4;
+                    position: relative;
+                    &:hover{
+                        color: $color2;
+                    }
+                }
+        }
+        }
+    }
+    .logo{
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0;
+        top: 50px;
+        &.hidden{
+            display: none;
+        }
+        .image{
+            height: 150px;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+        .texte{
+            padding-top: 20px;
+            padding-bottom: 50px;
+            h1{
+                text-transform: uppercase;
+                font-family: "Metropolis";
+                letter-spacing: 4px;
+                color: $color2;
+            }
+        }
+       
+    }
+}
+footer{
+    width: 100%;
+    height: 50px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $color1;
+    color: $color4;
+    .icons{
+        ul{
+            display: flex;
+            gap: 15px;
+            li{
+                cursor: pointer;
+                padding: 5px;
+                &:hover{
+                    border-radius: 5px;
+                    background: $color4 ;
+                    a{
+                        color: $color1;
+                    }
+                }
+                list-style: none;
+                a{
+                    text-decoration: none;
+                    color: $color4;
+                    
+                }
+            }
+        }
+    }
+}
+main{
+    padding: 30px 25%;
+    .about{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        
+        .image{
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            img{
+                position: relative;
+                top: -80px;
+                width: 90%;
+                
+            }
+        }
+        .text{
+            color: $color4;
+            width: 49%;
+            min-width: 49%;
+            h2{
+                position: relative;
+                
+                &::before{
+                    content: "";
+                    position: absolute;
+                    height: 1px;
+                    width: 30px;
+                    background: $color4;
+                    bottom: -20px;
+                    
+                }
+            }
+            p{
+                padding-top: 40px;
+                
+            }
+        }
+    }
+    .homeUser{
+        .firstPart{
+            width: 100%;
+            h1{
+                text-align: center;
+                color: $color2;
+            }
+            p{
+                padding: 20px 0;
+            }
+        }
+        .secondPart{
+            display: flex;
+            gap: 20px;
+            .left{
+                width: 25%;
+                height: 100%;
+                .firstText{
+                    
+                    h3{
+                        position: relative;
+                        padding: 20px 0;
+                        &::before{
+                            content: "";
+                            position: absolute;
+                            height: 1px;
+                            width: 30px;
+                            background: $color4;
+                            bottom: 0px;
+                        }
+                    }
+                    p{
+                        position: relative;
+                        padding: 20px 0;
+                        &::before{
+                            content: "";
+                            position: absolute;
+                            height: 1px;
+                            width: 100%;
+                            background: $color4;
+                            bottom: -20px;
+                        }
+                    }
+
+                }
+                .icons{
+                    position: relative;
+                    padding: 20px 0;
+                    width: 100%;
+                    ul{
+                        position: relative;
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        li{
+                            padding: 5px;
+                            cursor: pointer;
+                            &:hover{
+                                border-radius: 5px;
+                                background: $color4 ;
+                                a{
+                                    color: $color1;
+                                }
+                            }
+                            list-style: none;
+                            a{
+                                text-decoration: none;
+                                color: $color4;
+                                
+                            }
+                        }
+                    }
+                }
+                .rating{
+                    position: relative;
+                    #star{
+                        padding: 20px 0;
+                        text-align: center;
+                        color: $color8;
+                        &::before{
+                            content: "";
+                            position: absolute;
+                            height: 1px;
+                            width: 42%;
+                            background: $color8;
+                            left: 0px;
+                            top: 30px;
+                            
+                        }
+                        &::after{
+                            content: "";
+                            position: absolute;
+                            height: 1px;
+                            width: 42%;
+                            background: $color8;
+                            right: 0px;
+                            top: 30px;
+                            
+                        }
+                    }
+                    #text{
+                        position: relative;
+                        margin-top: -10px;
+                        padding-bottom: 20px;
+                        font-size: 1.6em;
+                        font-family: "Dido";
+                        border-bottom: $color8 1px solid;
+                    }
+                }
+                .lastReceipt{
+                    padding: 10px 0;
+                    p{
+                        position: relative;
+                        padding: 10px 0;
+                        font-family: "Dido";
+                        &::before{
+                            content: "";
+                            position: absolute;
+                            height: 1px;
+                            width: 15%;
+                            background: $color8;
+                            
+                            bottom: -10px;
+                            left: 0px;
+                        }
+                    }
+                }
+            }
+            .right{
+                width: 75%;
+                position: relative;
+                
+                
+            }
+        }
+    }
+    .formComment{
+        margin: 10px 0;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $color7;
+        border-radius: 5px;
+        div{
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 20px;
+            input{
+                position: relative;
+                width: 100%;
+                padding: 5px 0;
+                outline: none;
+            }
+            textarea{
+                position: relative;
+                width: 100%;
+                border-radius: 5px;
+                outline: none;
+            }
+            button{
+                border-radius: 5px;
+                width: 50%;
+                border: none;
+                background: $color2;
+                color: $color1;
+                font-size: 1.1em;
+                padding: 5px 0;
+                cursor: pointer;
+                &:hover{
+                    background: $color7;
+                }
+            }
+        }
+    }
+    .recentReceipts{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 5px;
+        width: 100%;
+        position: relative;
+        .completeReceipt{
+            position: relative;
+            border: 1px solid $color5;
+            .image{
+                position: relative;
+                width: 100%;
+                min-height: 120px;
+                height: 350px;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    position: absolute;
+                    // left: 50%;
+                    // top: 50%;
+                    // transform: translate(-50%, -50%);
+                    width: 100%;
+                    object-fit: cover;
+                } 
+                
+        
+            }
+            .details{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                padding: 20px 0;
+                
+                .accountImage{
+                    height: 20px;
+                    width: 20px;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+                p{
+                    font-size: 0.5em;
+                    color: $color2;
+                    font-family: "Metropolis";
+                    vertical-align: middle;
+                    text-align: center;
+                }
+            }
+            .receipt{
+                h2{
+                    padding: 5px;
+                    font-family: "Metropolis";
+                    font-size: 1.2em;
+                }
+                p{
+                    font-size: 0.9em;
+                    padding: 5px;
+                }
+            }
+            .formDetail{
+                padding: 20px 5px;
+                border-bottom: 1px solid $color5;
+                button{
+                    padding:10px 5px;
+                    width: 100%;
+                    border: none;
+                    background: $color2;
+                    color: $color1;
+                    font-size: 0.9em;
+                    cursor: pointer;
+                    &:hover{
+                        background: $color7;
+                    }
+                }
+            }
+            .comment{
+                padding: 30px 5px;
+                display: flex;
+                align-items: center;
+                font-size: 0.9em;
+                
+            }
+        }
+    }
+    //page Contact
+    .formContact{
+        margin: 10px 0;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $color7;
+        border-radius: 5px;
+        div{
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 20px;
+            input{
+                position: relative;
+                width: 100%;
+                padding: 5px 0;
+                outline: none;
+            }
+            textarea{
+                position: relative;
+                width: 100%;
+                border-radius: 5px;
+                outline: none;
+            }
+            button{
+                border-radius: 5px;
+                width: 50%;
+                border: none;
+                background: $color2;
+                color: $color1;
+                font-size: 1.1em;
+                padding: 5px 0;
+                cursor: pointer;
+                &:hover{
+                    background: $color7;
+                }
+            }
+        }
+    }
+    .formRegister{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+        padding: 10px 0;
+        border: 1px solid $color7;
+        border-radius: 5px;
+        #titreAndError{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            h2{
+                color: $color2;
+                padding: 10px 0;
+            }
+            #errorMsg{
+                color: red;
+                padding: 10px 0;
+            }
+            
+        }
+        .allInput{
+            display: flex;
+            gap: 20px;
+            .row{
+                div{
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 0;
+                    gap:10px;
+                    input{
+                        position: relative;
+                        width: 100%;
+                        padding: 5px 10px;
+                        outline: none;
+                    }
+                }
+            }
+        }
+        
+
+        button{
+            border-radius: 5px;
+            width: 100%;
+            border: none;
+            background: $color2;
+            color: $color1;
+            font-size: 1.1em;
+            padding: 5px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            &:hover{
+                background: $color7;
+            }
+        }
+    
+    }
+}
+//tableau de bord admin
+// min-height: 100%;
+// min-width: 100%;
+// position: absolute;
+// left: 0;
+.dashboard.active{
+    width: calc(100%);
+    padding: 80px 0;
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        padding: 20px;
+        width: 100%;
+        position: relative;
+        gap: 30px;
+        &.edit{
+            .resume{
+                grid-column: 3/4;
+            }
+            
+        }
+        &.editcom{
+            .resume:first-child{
+                grid-column: 2/3;
+            }
+            .resume:last-child{
+                grid-column: 4/5;
+            }
+            
+        }
+        .resume{
+            position: relative;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 30px;
+            box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+            background: var(--white);
+            &:hover{
+                background: var(--blue);
+                
+                .denom , .icon,.qt{
+                    color: var(--white);
+                }
+            }
+            a{
+                position: absolute;
+                min-width: 100%;
+                min-height: 100%;
+                left: 0;
+                top:0;
+            }
+            .qt{
+                font-weight: 500;
+                color: var(--blue);
+                font-size: 2.5em;
+            }
+            .denom{
+                font-size: 1.2em;
+                color: var(--black2);
+                margin-top: 5px;
+                margin-left: 8px;
+                white-space: nowrap;
+            }
+            .icon{
+                font-size: 3em;
+                color: var(--black2);
+            }
+        }
+    
+    }
+    .editPopup{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0);
+        opacity: 0;
+        transition: transform 1s, opacity 0.5s;
+        background: rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(10px);
+        z-index: 999;
+        &.visible{
+            transform: scale(1);
+            transition: transform 0.2s, opacity 0.5s;
+            opacity: 1;
+            .thePopup{
+                transform: scale(1);
+                transition: 0.5s;
+            }
+        }
+        .thePopup{
+            position: relative;
+            width: 70%;
+            height:fit-content;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            transform: scale(0);    
+            transition: 0.5s;
+            background: $color1;
+            
+            .popUpCloseBtn{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 25px;
+                height: 25px;
+                font-size: 18px;
+                text-align: center;
+                line-height: 25px;
+                color: #fdfdfd;
+                background: rgba(0,0,0, 0.3);
+                border-radius: 50%;
+                cursor: pointer;
+                }
+            
+            .title{
+                padding: 10px 0;
+                text-align: center;
+            }
+            .body{
+                .head.user{
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                }
+                div{
+                    padding: 5px 10px;
+                    label{
+                        padding: 0px 5px;
+                    }
+                }
+                .rightEdit{
+                    .photo{
+                        img{
+                            height: 200px;
+                        }
+                    }
+                }
+                .messageContent{
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    textarea{
+                        position: relative;
+                        margin: 0 30px;
+                        width: 80%;
+                        outline: none;
+                    }
+                }
+            }
+            .editButton{
+                position: relative;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                button{
+                    padding: 5px 10px;
+                    font-size:medium;
+                }
+            }
+        }
+        }
+        
+    
+}
+
+
+.dashboard .detail  {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    
+}
+.dashboard .detail.edit{
+    grid-template-columns: 1fr;
+    padding: 0 30px;
+}
+.dashboard .detail.user  {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.dashboard .detail.user .recentActivity{
+    position: relative;
+    width: 70%;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    padding: 20px;
+}
+.dashboard .detail .recentActivity{
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    padding: 20px;
+}
+.dashboard .detail .recentActivity .textUp{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}
+.dashboard .detail .recentActivity .textUp .texte{
+    position: relative;
+    color: var(--blue);
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.dashboard .detail .recentActivity .textUp button{
+    font-size: medium;
+    padding: 5px  10px;
+    color: var(--white);
+    background: var(--blue);
+    border-radius: 6px;
+    
+}
+.dashboard .detail .recentActivity table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.dashboard .detail .recentActivity table tr{
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dashboard .detail .recentActivity table tbody tr:hover{
+    color: var(--white);
+    background: var(--blue);
+    td{
+        img{
+            filter: invert(1);
+        }
+    }
+}
+.dashboard .detail .recentActivity table tbody tr td{
+padding: 5px 0;
+text-align: center;
+}
+.dashboard .detail .recentActivity table tbody tr td img{
+    position: relative;
+    height: 30px;
+    
+    object-fit: contain;
+}
+.dashboard .detail .recentActivity table th {
+    text-align: center;
+}
+.dashboard .detail .recentActivity table tbody tr td:last-child,
+.dashboard .detail .recentActivity table th:last-child
+{
+text-align: end;
+}
+.dashboard .detail .recentUser {
+    position: relative;
+    padding: 30px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    margin: 0 20px;
+}
+.dashboard .detail .recentUser .resume .qt{
+    font-weight: 500;
+    color: var(--blue);
+    font-weight: 600;
+}
+.dashboard .detail .recentUser .resume .denom{
+    font-size: 0.8em;
+    color: var(--black2);
+    margin-top: 5px;
+    margin-left: 8px;
+}
+.dashboard .detail .recentUser  .user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+}
+.dashboard .detail .recentUser  .user:hover {
+    background: var(--blue);
+    color: var(--white);
+    border-radius: 10px;
+}
+.dashboard .detail .recentUser  .user:hover .userInfo .mail{
+    color: var(--white);
+}
+.dashboard .detail .recentUser  .user .photo{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+.dashboard .detail .recentUser  .user .photo img{
+    object-fit: cover;
+    width: 100%;
+}
+.dashboard .detail .recentUser  .user .userInfo{
+    padding: 0 10px;
+}
+.dashboard .detail .recentUser  .user .userInfo .pseudo{
+    font-weight: 600; 
+    font-size: 0.8em;
+}
+.dashboard .detail .recentUser  .user .userInfo .mail{
+    font-weight: 200; 
+    font-size: 0.7em;
+    padding-top: 5px;
+    color: var(--black2);
+}
