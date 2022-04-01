@@ -1,6 +1,4 @@
-<?php $title = 'A propos'; ?>
 
-<?php ob_start(); ?>
 <main>
     <div class="about">
         <div class="image">
@@ -19,5 +17,3 @@
         </div>
     </div>
 </main>
-<?php $content = ob_get_clean(); ?>
-<?php require_once("./view/template.php");

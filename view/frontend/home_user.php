@@ -1,6 +1,5 @@
-<?php $title = 'Acceuil'; ?>
 
-<?php ob_start(); ?>
+
 <main>
     <div class="homeUser">
         <section class="firstPart">
@@ -68,7 +67,7 @@
                     <div class="receipt">
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing</p>
                     </div>
-                    <form action="#" method="post" class="formDetail">
+                    <form action="#" method="GET" class="formDetail">
                         <button>Voir plus</button>
                     </form>
 
@@ -95,9 +94,10 @@
                         <h2><?= $elem["title"] ?></h2>
                         <p><?= substr($elem["smalldesc"],0,50)."[...]" ?></p>
                     </div>
-                    <form action="#" method="post" class="formDetail">
+                    <form action="#" method="GET" class="formDetail">
                         <input type="hidden" name="idArticle" value=<?= $elem["idarticle"] ?>>
-                        <button name="submitAction" value="moreDetail">Voir plus</button>
+                        <input type="hidden" name="controller" value="articlecontroller">
+                        <button name="action" value="showArticle">Voir plus</button>
                     </form>
                     <div class="comment">
                         <i class="fas fa-comment-alt"></i>
@@ -109,5 +109,3 @@
         </section>
     </div>
 </main>
-<?php $content = ob_get_clean(); ?>
-<?php require_once("./view/template.php");

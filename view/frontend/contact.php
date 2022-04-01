@@ -1,7 +1,6 @@
-<?php $title = 'Contact';
-ob_start();?>
+
 <main>
-<form action="#" method="POST" class="formContact">
+<form action="#" method="GET" class="formContact">
         <div class="email">
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" required>
@@ -11,9 +10,8 @@ ob_start();?>
             <textarea type="text" name="message" placeholder="Votre message" rows="5" required></textarea>
         </div>
         <div class="button">
-            <button type="submit" name="submitAction" value="messageSubmit">Envoyer</button>
+            <input type="hidden" name="controller" value="messagecontroller">
+            <button type="submit" name="action" value="sendMessage">Envoyer</button>
         </div>
     </form>
 </main>
-<?php $content = ob_get_clean(); ?>
-<?php require_once("./view/template.php");

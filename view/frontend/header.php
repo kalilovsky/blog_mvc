@@ -2,7 +2,7 @@
     <nav>
         <ul>
             <li>
-                <a href="index.php?page=home">
+                <a href="index.php?controller=articlecontroller&action=index">
                     <span class="icon">
                         <i class="fas fa-home"></i>
                     </span>
@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="index.php?page=listArticles">
+                <a href="index.php?controller=articlecontroller&action=showAllArticles">
                     <span class="icon">
                         <i class="fas fa-concierge-bell"></i>
                     </span>
@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a href="index.php?page=about">
+                <a href="index.php?controller=articlecontroller&action=showAbout">
                     <span class="icon">
                         <i class="fas fa-info"></i>
                     </span>
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li>
-                <a href="index.php?page=contactPage">
+                <a href="index.php?controller=articlecontroller&action=showContactPage">
                     <span class="icon">
                         <i class="fas fa-address-book"></i>
                     </span>
@@ -40,15 +40,21 @@
                         <?php if (!isset($_SESSION["mail"])) { ?>
                             <span class="titre">connexion</span>
                         <?php } else { ?>
-                            <span class="titre"><?= $_SESSION["pseudo"]  ?></span>
+                            <span class="titre"> <img src="ressource/img/account/<?=$_SESSION["photo"] ?>" alt="" srcset="">
+                                <?= $_SESSION["pseudo"]  ?></span>
                         <?php }  ?>
                 </a>
             </li>
         </ul>
     </nav>
     <div class="menuDeroulant" id="menuDeroulant">
-        <?php if (!isset($_SESSION["userType"])) { ?>
-            <form action="#" method="POST" class="formLogin">
+        <?php if (!isset($_SESSION["userType"])) {
+             if(isset($_SESSION["erreur"])){
+                ?>
+                <p style="color:red"> <?=$_SESSION["erreur"] ?> </p>
+                <?php
+            } ?>
+            <form action="#" method="GET" class="formLogin">
                 <div class="email">
                     <label for="email">Email</label>
                     <input type="email" name="email" placeholder="Email" required>
@@ -56,30 +62,39 @@
                 <div class="pwd">
                     <label for="pwd">Mot de passe</label>
                     <input type="password" name="pwd" placeholder="Mot de passe" required>
+                    <input type="hidden" name="controller" value="userscontroller">
                 </div>
                 <div class="button">
-                    <button name="submitAction" value="login">Login</button>
+                    <button name="action" value="login">Login</button>
                 </div>
             </form>
             <div>
-                <p><a href="index.php?page=register">Register now!</a></p>
+                <p><a href="index.php?controller=articlecontroller&action=showRegisterPage">Register now!</a></p>
             </div>
         <?php } elseif ($_SESSION["userType"] == "admin") { ?>
             <div>
-                <p><a href="index.php?page=adminDashboard">Tableau de bord</a></p>
-                <p><a href="index.php?page=editUsersAdmin">Users</a></p>
-                <p><a href="index.php?page=editCommentsAdmin">Comments</a></p>
-                <p><a href="index.php?page=editArticlesAdmin">Articles</a></p>
-                <p><a href="index.php?page=editMessagesAdmin">Messages</a></p>
+                <p><a href="index.php?controller=articlecontroller&action=showAdminDashboard">Tableau de bord</a></p>
+                <p><a href="index.php?controller=userscontroller&action=showEditUsersAdmin">Users</a></p>
+                <p><a href="index.php?controller=commentcontroller&action=showeditCommentsAdmin">Comments</a></p>
+                <p><a href="index.php?controller=articlecontroller&action=showEditArticlesAdmin">Articles</a></p>
+                <p><a href="index.php?controller=articlecontroller&action=showAddArticlePage">Ajout Article</a></p>
+                <p><a href="index.php?controller=messagecontroller&action=showEditMessagesAdmin">Messages</a></p>
             </div>
             <div>
                 <p><a href="view/disconnect.php">Déconnection</a></p>
             </div>
-        <?php } elseif ($_SESSION["userType"] == "normal") { ?>
+        <?php } elseif ($_SESSION["userType"] == "author") { ?>
+            <div>
+                <p><a href="index.php?controller=articlecontroller&action=showAddArticlePage">Ajout Article</a></p>
+
+                <p><a href="view/disconnect.php">Déconnection</a></p>
+            </div>
+        <?php } else{
+            ?>
             <div>
                 <p><a href="view/disconnect.php">Déconnection</a></p>
             </div>
-        <?php } ?>
+       <?php } ?>
     </div>
     <div class="logo" id="logo">
         <div class="image">

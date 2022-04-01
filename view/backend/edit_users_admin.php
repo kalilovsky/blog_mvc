@@ -1,18 +1,15 @@
 <?php
 if ($_SESSION["userType"] != "admin") {
     $title = "Not Authorised";
-    ob_start();
+   
 ?>
     <div class="dashboard active" id="dashboard">
         <p>Vous n'êtes pas autoriser à voir cette page.</p>
     </div>
 <?php
-    $content = ob_get_clean();
-    require_once("./view/template.php");
-    exit();
-}
-$title = "Tableau de bord";
-ob_start(); ?>
+    
+} else{
+?>
 <div class="dashboard active" id="dashboard">
     <div class="cards edit">
         <div class="resume">
@@ -133,9 +130,10 @@ ob_start(); ?>
     document.getElementById("logo").classList.add("hidden");
     Array.from(document.getElementsByClassName("editContent")).forEach(e => {
         e.addEventListener("click", () => {
-            const url = "./controller/controller_fetch.php";
+            const url = "index.php";
             let formData = new FormData();
-            formData.append("submitAction", "getUser");
+            formData.append("action", "getUser");
+            formData.append("controller","userscontroller");
             formData.append("idUsers", e.dataset.id);
             const dataToSend = {
                 method: "POST",
@@ -166,8 +164,9 @@ ob_start(); ?>
         switch (e.submitter.id) {
             case "updateButton": {
                 let formData = new FormData(e.target);
-                formData.append("submitAction", "updateUser");
-                const url = "/controller/controller_fetch.php"
+                formData.append("action", "updateUser");
+                formData.append("controller", "userscontroller");
+                const url = "index.php"
                 const options = {
                     method: "post",
                     body: formData
@@ -189,8 +188,9 @@ ob_start(); ?>
             }
             case "deleteButton": {
                 let formData = new FormData(e.target);
-                formData.append("submitAction", "deleteUser");
-                const url = "/controller/controller_fetch.php"
+                formData.append("action", "deleteUser");
+                formData.append("controller", "userscontroller");
+                const url = "index.php"
                 const options = {
                     method: "post",
                     body: formData
@@ -212,6 +212,5 @@ ob_start(); ?>
         }
     }
 </script>
-<?php $content = ob_get_clean();
-require_once("./view/template.php");
+<?php  }
 ?>

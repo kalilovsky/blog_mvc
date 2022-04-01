@@ -1,7 +1,4 @@
-<?php
-$title = "Inscription";
-ob_start();
-?>
+
 <main>
     <?php if(!isset($_SESSION["mail"])){ ?>
     <form class="formRegister" id="formRegister" method="post">
@@ -45,7 +42,8 @@ ob_start();
 
 
         <div class="button">
-            <button type="submitAction" name="submitAction" value="register" id="registerBtn">S'Inscrire</button>
+            <input type="hidden" name="controller" value="userscontroller">
+            <button type="submitAction" name="action" value="register" id="registerBtn">S'Inscrire</button>
         </div>
     </form>
     <?php }else{?>
@@ -85,5 +83,4 @@ ob_start();
     //     }
     // })
 </script>
-<?php $content = ob_get_clean();
-require_once("view/template.php");
+

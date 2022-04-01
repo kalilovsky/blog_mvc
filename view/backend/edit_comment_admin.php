@@ -1,18 +1,16 @@
 <?php
 if ($_SESSION["userType"] != "admin") {
     $title = "Not Authorised";
-    ob_start();
+    
 ?>
     <div class="dashboard active" id="dashboard">
         <p>Vous n'êtes pas autoriser à voir cette page.</p>
     </div>
 <?php
-    $content = ob_get_clean();
-    require_once("./view/template.php");
-    exit();
-}
-$title = "Tableau de bord";
-ob_start(); ?>
+    
+} else {
+    $statusText = ["Non Approved", "Approved"]
+?>
 <div class="dashboard active" id="dashboard">
     <div class="cards editcom">
         <div class="resume">
@@ -62,12 +60,12 @@ ob_start(); ?>
                 </thead>
                 <tbody>
                     <?php foreach ($allComments as $elem) : ?>
-                        <tr class="editContent" data-id="<?= $elem["idcomment"] ?>">
+                        <tr class="editContent<?= $elem["status"] == 0 ? (" unread") : "" ?>" data-id="<?= $elem["idcomment"] ?>">
                             <td><?= $elem["idcomment"] ?></td>
                             <td><?= $elem["pseudo"] ?></td>
                             <td><?= $elem["title"] ?></td>
                             <td><?= $elem["datecreated"]  ?></td>
-                            <td id="<?= $elem["idcomment"] ?>"><?= $elem["status"]  ?></td>
+                            <td id="<?= $elem["idcomment"] ?>"><?= $statusText[$elem["status"]]  ?></td>
 
                         </tr>
                     <?php endforeach  ?>
@@ -126,10 +124,12 @@ ob_start(); ?>
 
     Array.from(document.getElementsByClassName("editContent")).forEach(e => {
         e.addEventListener("click", () => {
-            const url = "./controller/controller_fetch.php";
+            const url = "index.php";
             let formData = new FormData();
-            formData.append("submitAction","getComment");
+            formData.append("action","getComment");
+            formData.append("controller","commentcontroller");
             formData.append("idComment",e.dataset.id);
+            
             const dataToSend = {
                 method: "POST",
                 body : formData
@@ -137,6 +137,7 @@ ob_start(); ?>
             fetch(url,dataToSend)
             .then(data=>data.json())
             .then(data=>{
+                
                 document.getElementById("idComment").value = data[0].idcomment;
                 document.getElementById("pseudo").innerHTML = data[0].pseudo;
                 document.getElementById("email").innerHTML = data[0].email;
@@ -166,8 +167,9 @@ ob_start(); ?>
                 case "updateButton":
                     e.preventDefault();
                     let formData = new FormData(e.currentTarget);
-                    formData.append("submitAction","updateComment");
-                    const url = "/controller/controller_fetch.php"
+                    formData.append("action","updateComment");
+                    formData.append("controller","commentcontroller");
+                    const url = "index.php"
                     const options = {
                         method : "post",
                         body : formData
@@ -175,23 +177,26 @@ ob_start(); ?>
                     fetch(url,options)
                     .then(data=>data.json())
                     .then(data=>{
-                        let selectedStatus = document.getElementById("status").value;
+                        let statusText = ["Non Approved","Approved"];
+                        let selectedStatus = statusText[document.getElementById("status").value];
                         let originalStatus = document.getElementById("status").dataset.status;
                         
                         if(originalStatus!=selectedStatus){
-                            
-                            if(selectedStatus==0){
+                            // console.log(String(data.id));
+                           
+                            if(selectedStatus==statusText[0]){
                                 document.getElementById("aprovedComments").innerHTML = ~~document.getElementById("aprovedComments").innerHTML-1;
                                 document.getElementById("waitingComments").innerHTML = ~~document.getElementById("waitingComments").innerHTML+1;
                                 document.getElementById(data).innerHTML = selectedStatus;
                                 document.getElementById("status").dataset.status = selectedStatus;
-                              
+                                document.getElementById(String(data)).parentElement.classList.toggle("unread")
                             }else{
                                 document.getElementById("aprovedComments").innerHTML = ~~document.getElementById("aprovedComments").innerHTML+1;
                                 document.getElementById("waitingComments").innerHTML = ~~document.getElementById("waitingComments").innerHTML-1;
                                 document.getElementById(data).innerHTML = selectedStatus;
                                 document.getElementById("status").dataset.status = selectedStatus;
-                                
+                                document.getElementById(String(data)).parentElement.classList.toggle("unread")
+
                             }
                             document.getElementById("editPopup").classList.toggle("visible");
                         }
@@ -201,8 +206,9 @@ ob_start(); ?>
                     //delete comment
                     e.preventDefault();
                     let formData1 = new FormData(e.currentTarget);
-                    formData1.append("submitAction","deleteComment");
-                    const url1 = "/controller/controller_fetch.php"
+                    formData1.append("action","deleteComment");
+                    formData1.append("controller","commentcontroller");
+                    const url1 = "index.php"
                     const options1 = {
                         method : "post",
                         body : formData1
@@ -225,6 +231,5 @@ ob_start(); ?>
 
 
 </script>
-<?php $content = ob_get_clean();
-require_once("./view/template.php");
+<?php }
 ?>

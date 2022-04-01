@@ -1,6 +1,7 @@
 <?php
+namespace model ;
+use PDO; //a enlever lors du rajout des attributs dans la classe parente
 
-require_once("manager.php");
 
 class comment extends Manager {
 
@@ -64,7 +65,7 @@ class comment extends Manager {
 
     public function postComment($commentInfo){
         $db = $this->dbConnect();
-        $insertSql = "INSERT INTO comment(idarticle,contentcomment  ,idusers,sender) VALUES(?,?,?,?)";
+        $insertSql = "INSERT INTO comment(idarticle,contentcomment,idusers,sender) VALUES(?,?,?,?)";
         $querySql = $db->prepare($insertSql);
         $querySql->execute(array($commentInfo["idArticle"],$commentInfo["comment"],$commentInfo["idUser"],$commentInfo["pseudo"]));
         $test = $querySql->errorInfo();

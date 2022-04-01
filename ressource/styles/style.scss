@@ -33,7 +33,9 @@ $color10: #dddddd;
     src: url('../font/DidotHTFL06LightItal.ttf') format('truetype');
 }
 
-
+.zindex1{
+    z-index: 1 !important;
+}
 *{ 
     font-family: "Futura";
     margin: 0;
@@ -322,6 +324,14 @@ header{
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                     .icon{
+                        img{
+                            max-width: 30px;
+                            
+                            vertical-align: middle;
+                            border-radius: 50%;
+                            border: 1px solid rgba(0, 0, 0, 0.08) ;
+                            overflow: hidden;
+                        }
                         margin-right: 5px;
                     }
                 }
@@ -1103,6 +1113,10 @@ main{
     color: var(--white);
     background: var(--blue);
     border-radius: 6px;
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
     
 }
 .dashboard .detail .recentActivity table{
@@ -1114,7 +1128,11 @@ main{
     color: var(--black1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-
+.unread{
+    font-style: italic;
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
 .dashboard .detail .recentActivity table tbody tr:hover{
     color: var(--white);
     background: var(--blue);

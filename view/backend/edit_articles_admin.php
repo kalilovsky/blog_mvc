@@ -1,18 +1,16 @@
 <?php
 if ($_SESSION["userType"] != "admin") {
     $title = "Not Authorised";
-    ob_start();
+    
 ?>
     <div class="dashboard active" id="dashboard">
         <p>Vous n'êtes pas autoriser à voir cette page.</p>
     </div>
 <?php
-    $content = ob_get_clean();
-    require_once("./view/template.php");
-    exit();
-}
-$title = "Tableau de bord";
-ob_start(); ?>
+    
+} else{
+
+ ?>
 <div class="dashboard active" id="dashboard">
     <div class="cards edit">
         <div class="resume">
@@ -33,10 +31,10 @@ ob_start(); ?>
         <div class="recentActivity">
             <div class="textUp">
                 <div class="texte">
-                    Commentaires en Attente
+                    Liste des Articles
                 </div>
                 <button>
-                    <a href="index.php?page=addArticle">Ajouter</a>
+                    <a href="index.php?controller=articlecontroller&action=showaddArticlepage">New Article</a>
                 </button>
             </div>
             <table>
@@ -140,9 +138,11 @@ ob_start(); ?>
 
     Array.from(document.getElementsByClassName("editContent")).forEach(e => {
         e.addEventListener("click", () => {
-            const url = "./controller/controller_fetch.php";
+            const url = "index.php";
+            
             let formData = new FormData();
-            formData.append("submitAction", "getArticle");
+            formData.append("controler", "articlecontroller");
+            formData.append("action", "getArticle");
             formData.append("idArticle", e.dataset.id);
             const dataToSend = {
                 method: "POST",
@@ -183,8 +183,9 @@ ob_start(); ?>
         switch (e.submitter.id) {
             case "updateButton": {
                 let formData = new FormData(e.target);
-                formData.append("submitAction", "updateArticle");
-                const url = "/controller/controller_fetch.php"
+                formData.append("action", "updateArticle");
+                formData.append("contoller", "articlecontroller");
+                const url = "index.php"
                 const options = {
                     method: "post",
                     body: formData
@@ -204,8 +205,9 @@ ob_start(); ?>
             }
             case "deleteButton": {
                 let formData = new FormData(e.target);
-                formData.append("submitAction", "deleteArticle");
-                const url = "/controller/controller_fetch.php"
+                formData.append("action", "deleteArticle");
+                formData.append("controller", "articlecontroller");
+                const url = "index.php"
                 const options = {
                     method: "post",
                     body: formData
@@ -224,6 +226,6 @@ ob_start(); ?>
 
     })
 </script>
-<?php $content = ob_get_clean();
-require_once("./view/template.php");
+<?php 
+}
 ?>

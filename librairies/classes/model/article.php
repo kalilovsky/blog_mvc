@@ -1,6 +1,7 @@
 <?php
+namespace model;
+use PDO; //a enlever lors du rajout des attributs dans la classe parente
 
-require_once("manager.php");
 
 class article extends Manager {
     public function getArticles($limit){
@@ -45,10 +46,11 @@ class article extends Manager {
         return $idArticle;
     }
     
-    public function createArticle($articleInfo){
+    public function insertArticle($articleInfo){
         $db = $this->dbConnect();
         $insertSql = "INSERT INTO article(idusers,idcategory,title,content,smalldesc) VALUES(?,?,?,?,?)";
         $querySql = $db->prepare($insertSql);
-        $querySql->execute(array($articleInfo["idusers"],$articleInfo["idcategory"],$articleInfo["title"],$articleInfo["content"],$articleInfo["smalldesc"]));
+        $querySql->execute(array($articleInfo["idUser"],$articleInfo["idCategory"],$articleInfo["title"],$articleInfo["content"],$articleInfo["smallDesc"]));
+        return $db->lastInsertId();
     }
 }

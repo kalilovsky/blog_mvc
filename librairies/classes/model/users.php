@@ -1,6 +1,7 @@
 <?php
 
-require_once("manager.php");
+namespace model;
+use PDO; //a enlever lors du rajout des attributs dans la classe parente
 
 class users extends Manager 
 {   

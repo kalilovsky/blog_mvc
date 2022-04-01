@@ -1,22 +1,19 @@
 <?php
 if ($_SESSION["userType"] != "admin") {
     $title = "Not Authorised";
-    ob_start();
+    
 ?>
     <div class="dashboard active" id="dashboard">
         <p>Vous n'êtes pas autoriser à voir cette page.</p>
     </div>
 <?php
-    $content = ob_get_clean();
-    require_once("./view/template.php");
-    exit();
-}
-$title = "Tableau de bord";
-ob_start(); ?>
+    
+}else{
+ ?>
 <div class="dashboard active" id="dashboard">
     <div class="cards">
         <div class="resume">
-            <a href="index.php?page=editUsersAdmin"></a>
+            <a href="index.php?controller=userscontroller&action=showEditUsersAdmin"></a>
             <div class="chiffre">
                 <div class="qt"><?= $countUsers; ?></div>
                 <div class="denom">Utilisateurs enregistrés</div>
@@ -26,7 +23,7 @@ ob_start(); ?>
             </div>
         </div>
         <div class="resume">
-            <a href="index.php?page=editCommentsAdmin"></a>
+            <a href="index.php?controller=commentcontroller&action=showeditCommentsAdmin"></a>
             <div class="chiffre">
                 <div class="qt"><?= count($allComments)  ?></div>
                 <div class="denom">Commentaires non approuvés</div>
@@ -36,7 +33,7 @@ ob_start(); ?>
             </div>
         </div>
         <div class="resume">
-            <a href="index.php?page=editArticlesAdmin"></a>
+            <a href="index.php?controller=articlecontroller&action=showEditArticlesAdmin"></a>
             <div class="chiffre">
                 <div class="qt"><?= count($allArticles) ?></div>
                 <div class="denom">Articles postés</div>
@@ -46,7 +43,7 @@ ob_start(); ?>
             </div>
         </div>
         <div class="resume">
-            <a href="index.php?page=editMessagesAdmin"></a>
+            <a href="index.php?controller=messagecontroller&action=showEditMessagesAdmin"></a>
             <div class="chiffre">
                 <div class="qt"><?= count(array_filter($allMessages,function($val){
                     return $val["status"]==0;
@@ -123,6 +120,4 @@ ob_start(); ?>
 <script>
     document.getElementById("logo").classList.add("hidden");
 </script>
-<?php $content = ob_get_clean();
-require_once("./view/template.php");
-?>
+<?php } ?>

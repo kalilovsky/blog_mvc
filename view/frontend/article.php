@@ -1,5 +1,4 @@
-<?php $title = $results[0]["title"];
-ob_start(); ?>
+
 <main>
     <div class="theReceipt">
         <div class="details">
@@ -47,7 +46,7 @@ ob_start(); ?>
         <?php } ?>
     </div>
     <?php if (isset($_SESSION["mail"])) { ?>
-        <form action="#" method="POST" class="formComment" id="formComment">
+        <form action="#" method="GET" class="formComment" id="formComment">
             <div>
                 <p id="message" style="color: green;"></p>
             </div>
@@ -62,7 +61,8 @@ ob_start(); ?>
             <input type="hidden" name="idArticle" value="<?= $results[0]["idarticle"] ?>">
             <input type="hidden" name="idUser" value="<?= $_SESSION["idUser"] ?>">
             <div class="button">
-                <button type="submitAction" name="commentSubmit">Envoyer</button>
+                <input type="hidden" name="controller" value="commentcontroller">
+                <button type="action" name="postComment">Envoyer</button>
             </div>
         </form>
     <?php } ?>
@@ -88,9 +88,10 @@ ob_start(); ?>
                         <h2><?= $elem["title"] ?></h2>
                         <p><?= substr($elem["smalldesc"], 0, 50) . "[...]" ?></p>
                     </div>
-                    <form action="#" method="post" class="formDetail">
+                    <form action="#" method="get" class="formDetail">
                         <input type="hidden" name="idArticle" value=<?= $elem["idarticle"] ?>>
-                        <button name="submitAction" value="moreDetail">Voir plus</button>
+                        <input type="hidden" name="controller" value="articlecontroller">
+                        <button name="action" value="showArticle">Voir plus</button>
                     </form>
                     <div class="comment">
                         <i class="fas fa-comment-alt"></i>
@@ -106,7 +107,7 @@ ob_start(); ?>
     document.getElementById("formComment").addEventListener("submit", e => {
         e.preventDefault();
         let form = e.currentTarget;
-        const url = "./controller/controller_fetch.php";
+        const url = "./controller_fetch.php";
         let formData1 = new FormData(form);
         formData1.append("submitAction", "commentSubmit");
         const options = {
@@ -124,5 +125,4 @@ ob_start(); ?>
     })
 </script>
 <?php } ?>
-<?php $content = ob_get_clean(); ?>
-<?php require_once("./view/template.php");
+

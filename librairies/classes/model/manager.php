@@ -1,4 +1,8 @@
 <?php
+namespace model ;
+
+use PDO;
+use PDOException;
 
 class Manager
 {
@@ -7,7 +11,7 @@ class Manager
         try {
             $db = new PDO('mysql:host=localhost;dbname=blogg_olivier;charset=utf8', 'khalil', 'root');
             return $db;
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             die('Erreur : ' . $e->getMessage());
         }
     }

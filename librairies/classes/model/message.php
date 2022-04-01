@@ -1,5 +1,7 @@
 <?php
-require_once("manager.php");
+namespace model ;
+use PDO; //a enlever lors du rajout des attributs dans la classe parente
+
 
 class message extends Manager{
 
@@ -15,7 +17,7 @@ class message extends Manager{
         $insertSql = 'SELECT * FROM message';
         $querySql = $db->prepare($insertSql);
         $querySql->execute();
-        $resultSql = $querySql->fetchAll(pdo::FETCH_ASSOC);
+        $resultSql = $querySql->fetchAll(PDO::FETCH_ASSOC);
         return $resultSql;
     }
 
@@ -30,6 +32,8 @@ class message extends Manager{
 
     public function getMessage($idMessage,$status = null){
         $db = $this->dbConnect();
+        //ici on récupere le status du front, on devrait plutot le récuperer via SQL
+        //et verifier si il est lu ou pas
         if($status==0){
             $updateSql = "UPDATE message SET status = 1 WHERE idmessage = ?";
             $querySql = $db->prepare($updateSql);
